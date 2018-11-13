@@ -2,7 +2,9 @@ var VideoList = (props) => (
   <div className="video-list">
     {
       props.videos.map(item =>
-        <VideoListEntry video = {item} /> //refers to the list of videos in VideoListEntry
+        <VideoListEntry video = {item} key={item.id.videoId} onVidClick={props.onVidClick}/> //refers to the list of videos in VideoListEntry
+
+        // <VideoListEntry video={item} key={item.id.videoId} onClick={props.onClick}/>
       )
     }
   </div>
