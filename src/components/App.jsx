@@ -3,8 +3,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentVid: exampleVideoData[0],
-      vidList: exampleVideoData
+      currentVid: {id:{videoId: ''},snippet:{title:'', description:'', thumbnails:{default:{url:''}}}},
+      vidList: [{id:{videoId: ''},snippet:{title:'', description:'', thumbnails:{default:{url:''}}}}]
     };
 
   }
@@ -13,6 +13,20 @@ class App extends React.Component {
     this.setState({
       currentVid: vid
     });
+  }
+
+  searchResults() {
+    //console.log(this.props.videoSearch(undefined, stuff=>console.log(stuff)))
+    this.props.videoSearch(undefined, stuff=>{
+      this.setState({
+        vidList: stuff,
+        currentVid: stuff[0],
+      });
+    });
+  }
+
+  componentDidMount() {
+    this.searchResults();
   }
 
   render() {

@@ -11,12 +11,12 @@ var searchYouTube = (options = {key: window.YOUTUBE_API_KEY, max: 5, query: ''},
       videoEmbeddable: 'true',
       type: 'video'
     },
-    contentType: "application/json",
+    contentType: 'application/json',
     success: function (data) {
       callback(data.items);
     },
     error: function (data) {
-      console.error('some kind of error')
+      console.error('some kind of error');
     }
   });
 
