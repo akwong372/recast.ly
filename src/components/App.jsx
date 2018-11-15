@@ -15,9 +15,10 @@ class App extends React.Component {
     });
   }
 
-  searchResults() {
-    //console.log(this.props.videoSearch(undefined, stuff=>console.log(stuff)))
-    this.props.searchYouTube(undefined, stuff=>{
+
+  searchResults(event = {target: {value: ''}}) {
+    var videoObj = { key: window.YOUTUBE_API_KEY, max: 5, query: event.target.value }
+    this.props.searchYouTube(videoObj, stuff => {
       this.setState({
         vidList: stuff,
         currentVid: stuff[0],
@@ -34,7 +35,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <Search searchResults={this.searchResults.bind(this)}/>
           </div>
         </nav>
         <div className="row">
