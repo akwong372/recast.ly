@@ -17,7 +17,7 @@ class App extends React.Component {
 
   searchResults() {
     //console.log(this.props.videoSearch(undefined, stuff=>console.log(stuff)))
-    this.props.videoSearch(undefined, stuff=>{
+    this.props.searchYouTube(undefined, stuff=>{
       this.setState({
         vidList: stuff,
         currentVid: stuff[0],
