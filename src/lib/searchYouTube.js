@@ -19,6 +19,7 @@ var searchYouTube = (options = {key: window.YOUTUBE_API_KEY, max: 5, query: ''},
       console.error('some kind of error');
     }
   });
+  //comment
 
 };
 
