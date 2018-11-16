@@ -7,7 +7,7 @@ class App extends React.Component {
       vidList: [{ id: { videoId: '' }, snippet: { title: '', description: '', thumbnails: { default: { url: '' } } } }]
     };
 
-    this.debounceSearchResults = _.debounce(this.debounceSearchResults.bind(this), 500, {'leading': true, 'trailing': false})
+    this.debounceSearchResults = _.debounce(this.debounceSearchResults.bind(this), 500, {'leading': false, 'trailing': true});
   }
 
   onVidClick(vid) {

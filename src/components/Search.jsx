@@ -1,8 +1,6 @@
 var Search = (props) => (
   <div className="search-bar form-inline">
-    <input className="form-control" type="text" onChange={(event) => {
-      event.persist();
-      props.searchResults(event);}}/>
+    <input className="form-control" type="text" onChange={(event) => { event.persist(); props.searchResults(event); }}/>
     <button className="btn hidden-sm-down" >
       <span className="glyphicon glyphicon-search"></span>
     </button>
