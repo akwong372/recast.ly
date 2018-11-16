@@ -3,10 +3,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentVid: {id:{videoId: ''},snippet:{title:'', description:'', thumbnails:{default:{url:''}}}},
-      vidList: [{id:{videoId: ''},snippet:{title:'', description:'', thumbnails:{default:{url:''}}}}]
+      currentVid: { id: { videoId: '' }, snippet: { title: '', description: '', thumbnails: { default: { url: '' } } } },
+      vidList: [{ id: { videoId: '' }, snippet: { title: '', description: '', thumbnails: { default: { url: '' } } } }]
     };
 
+    this.debounceSearchResults = _.debounce(this.debounceSearchResults.bind(this), 500, {'leading': true, 'trailing': false})
   }
 
   onVidClick(vid) {
@@ -15,9 +16,13 @@ class App extends React.Component {
     });
   }
 
+  debounceSearchResults(event) {
+    this.searchResults(event);
+  }
 
-  searchResults(event = {target: {value: ''}}) {
-    var videoObj = { key: window.YOUTUBE_API_KEY, max: 5, query: event.target.value }
+
+  searchResults(event = {target: {value: 'React Tutorial'}}) {
+    var videoObj = { key: window.YOUTUBE_API_KEY, max: 5, query: event.target.value };
     this.props.searchYouTube(videoObj, stuff => {
       this.setState({
         vidList: stuff,
@@ -35,7 +40,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search searchResults={this.searchResults.bind(this)}/>
+            <Search searchResults={this.debounceSearchResults}/>
           </div>
         </nav>
         <div className="row">
